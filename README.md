@@ -1,6 +1,6 @@
 # shopping-cart-api
 
- -    REST Api in Node.js + MongoDB.
+ -    REST API in Node.js + MongoDB.
  -    JWT for Authetication and Authorization.
 
     ```
@@ -50,7 +50,7 @@
 ## 1. Product Routes
 
 ### A. Get list of all Products.
-Send Get request to fetch the list of all products with seller email in JSON format..
+fetch the list of all products in JSON format
 ```
 Method: GET 
 URL: /products/
@@ -124,14 +124,14 @@ URL: /user/login
 ````
       {
         "message": "Auth Successful!!",
-        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImthbHBpdEB0ZXN0LmNvbSIsIklkIjoiNWMyMWUxNGRjNmNmYjQ2ZDhjNTFiNjE1IiwiaWF0IjoxNTQ1NzI0MjcyLCJleHAiOjE1NDU3Mjc4NzJ9.0Ro0iBOO0I_mEjYHhQHPhXy0JmP_iAYhgZAHI3a4vkI"
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hbmkxMjNAZ21haWwuY29tIiwidXNlcklkIjoiNWU5YzNmMTc5NGQwZDkxYzZjOGM5YmY4IiwiaWF0IjoxNTg3MzUxMjg5LCJleHAiOjE1ODczNTQ4ODl9.V2qwcgNEQuPOLqxPIBAHhElcBYHaFitYenLT5iECRhg"
       }
 ````    
 
 ## 3. Order Routes
 
 ### A. Get list of all Orders.
-Send Get request to fetch the list of Orders by a User in JSON format.
+fetch the list of Orders by a User in JSON format.
 User must be logged in to do that
 ```
 Method: GET 
