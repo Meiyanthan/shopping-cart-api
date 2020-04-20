@@ -20,7 +20,6 @@
 
 ## Available API Routes
 
-upload product info  -  POST/products/
 ### [Products Routes](#1-product-routes)
 | Routes        | Description           | 
 | ------------- |:-------------:|
