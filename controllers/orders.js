@@ -113,11 +113,7 @@ exports.update_order = (req, res, next) =>{
     .exec().
     then(result=>{
         res.status(200).json({
-            message:"Success - Order updated",
-            request:{
-                type:"GET",
-                ulr:"https://localhost:3000/products/"+id
-            }
+            message:"Success - Order updated"
         });
     }).catch(err=>{
        res.status(500).json({error:err}); 

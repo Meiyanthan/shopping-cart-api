@@ -9,11 +9,10 @@ const orderRoutes = require("./routes/orders");
 const userRoutes = require("./routes/users");
 
 mongoose.connect(
-   "mongodb://localhost/shoppingCart",
+   "mongodb://localhost/shopping-cart",
    { useUnifiedTopology: true,useNewUrlParser: true, useCreateIndex: true }
 );
 
-app.use("/uploads",express.static('uploads'));
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended:true}));
