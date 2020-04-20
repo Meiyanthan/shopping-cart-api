@@ -1,16 +1,15 @@
 # shopping-cart-api
 
  -    REST API in Node.js + MongoDB.
- -    JWT for Authetication and Authorization.
+ -    JWT.
 
-    ```
     npm install
-    ```
+
 -   then
-    ```
-    npm start
-    ```
-    will start a server !
+ ```
+   npm start
+ ``` 
+   start a server !
     
     **localhost:3000**
          
@@ -20,192 +19,95 @@
 
 ## Available API Routes
 
-### [Products Routes](#1-product-routes)
-| Routes        | Description           | 
-| ------------- |:-------------:|
-| [`GET/products/`](#a-get-list-of-all-products)    |Get list of all products|
-| [`POST/products/`](#b-post-a-new-product)     | Post a new product if exist it will update the product |     
-| [`GET/products/:productId`](#c-get-details-of-a-particular-product)| Get details of a particular product. |    
+## Users API :
 
-
-### [User Routes](#2-user-routes)
-| Routes        | Description           | 
-| ------------- |:-------------:|
-| [`POST/user/signUp`](#a-sign-up-a-new-user)    | Sign up a new user |
-| [`POST/user/login`](#b-login-a-existing-user)     | Login a user |     
-
-
-### [Order Routes](#3-order-routes)
-| Routes        | Description           | 
-| ------------- |:-------------:|
-| [`GET/orders/`](#a-get-list-of-all-orders)    | Get all orders by the logged in user |
-| [`POST/orders/`](#b-post-a-new-order)     | Post a new order for the logged in user |
-| [`GET/orders/:orderId`](#c-get-details-of-a-particular-order)| Fetch details of a particular order |    
-| [`DELETE/orders/:orderId`](#d-delete-a-particular-order) | Deletes a particular order |
-| [`GET/orders/ordered_product_based_on_customer`](#e-order-based-on-customer) | List ordered product based on the customer or buyer |
-| [`GET/orders/cust_based_orders`](#f-customer-based-order) | List customer based on the number of product purchased |
-| [`GET/orders/order_product_based_date`](#g-order-prodcut-based-date) | List ordered product count based on date |
-| [`GET/orders/all_details`](#h-all-details) | List all the customer, order info |
-
-## 1. Product Routes
-
-### A. Get list of all Products.
-fetch the list of all products in JSON format
-```
-Method: GET 
-URL: /products/
-```
-
-----
-
-### B. Post a new product
-  
-  User must be logged in to do that.
-  
-```
-Method: POST
-URL: /products/
-Authorization: {token}
-```
-#### Parameters :
-| Field        | Type           |Required  |Description |
-| ------------- |:-------------:|:-------:|:-----:|
-| name   | String |Required    | Name of the product |
-| price   | String |Required    | Price of the product |
-| productDesc   | String |Required    | productDesc of the product |
-
-----
-
-
-
-### C. Get details of a particular product
+- Signup - POST / http://localhost:3000/user/signup 
 
 ```
-Method: GET
-URL: /products/:productId
-````
-----
-
-## 2. User Routes
-
-### A. Sign up a new User.
-  Sends a POST request to create a new user and returns a web token for further authentication.
+1.email (required)
+2.password (required)
 ```
-Method: POST 
-URL: /user/signup
+
+- Login - POST / http://localhost:3000/user/login
+
 ```
-#### Parameters :
-| Field        | Type           |Required  |Description |
-| ------------- |:-------------:|:-------:|:-----:|
-| email   | Email |Required    | User Email |
-| password   | String |Required    | password |
-
-  
-----
-
-### B. Login a existing user
-
-Sends a POST request to login a exisiting user
-    
+1.email (required)
+2.password (required)        
 ```
-Method: POST
-URL: /user/login
+
 ```
-#### Parameters :
-| Field        | Type           |Required  |Description |
-| ------------- |:-------------:|:-------:|:-----:|
-| email   | Email |Required    | User Email |
-| password   | String |Required    | password |
-
-#### Example :
-- **Request:**  `/user/login`
-
-- **Response:**
-````
-      {
-        "message": "Auth Successful!!",
-        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hbmkxMjNAZ21haWwuY29tIiwidXNlcklkIjoiNWU5YzNmMTc5NGQwZDkxYzZjOGM5YmY4IiwiaWF0IjoxNTg3MzUxMjg5LCJleHAiOjE1ODczNTQ4ODl9.V2qwcgNEQuPOLqxPIBAHhElcBYHaFitYenLT5iECRhg"
-      }
-````    
-
-## 3. Order Routes
-
-### A. Get list of all Orders.
-fetch the list of Orders by a User in JSON format.
-User must be logged in to do that
+Output : Get a token.
 ```
-Method: GET 
-URL: /orders/
-Authorization: {token}
-```
-----
 
-### B. Post a new order
-  
-  User must be logged in to do that.
-  
-```
-Method: POST
-URL: /orders/
-Authorization: {token}
-```
-#### Parameters :
-| Field        | Type           |Required  |Description |
-| ------------- |:-------------:|:-------:|:-----:|
-| productId   | String |Required    | Id of the product to be ordered |
-| quantity   | integer |Required    | Quantity |
+## Products API :
 
-    
-----
-
-### C. Get details of a particular order
-  User must be logged in to do that
-```
-Method: GET
-URL: /orders/:orderId
-Authorization: {token}
+- Create Product - POST / http://localhost:3000/products            
 ```  
-----
-### D. Delete a particular order
-  User must be logged in to do that.
-```
-Method: DELETE
-URL: /orders/:orderId
-Authorization: Bearer {token}
+Headers - authorization - {token}
 ```
 
-----
-### E. Order based on customer
-  User logged in not required.
-  List ordered product based on the customer or buyer
 ```
-Method: GET
-URL: /orders/ordered_product_based_on_customer
+1.name (required)
+2.price (required)
+3.productDesc (required)
 ```
 
-----
-### F. Customer based order
-  User logged in not required.
-  List customer based on the number of product purchased
+- Get All Product - GET / http://localhost:3000/products   
 ```
-Method: GET
-URL: /orders/cust_based_orders
+Headers - authorization - {token}
 ```
 
-----
-### G. Order Prodcut based Date
-  User logged in not required.
-  List ordered product count based on date
+- Get A Product - GET / http://localhost:3000/products/:productId  
 ```
-Method: GET
-URL: /orders/order_product_based_date
+Headers - authorization - {token}
 ```
 
-----
-### H. All Details
-  User logged in not required.
-  List all the customer, order info
+## Orders API :
+Create Order -  POST /  http://localhost:3000/orders 
 ```
-Method: GET
-URL: /orders/all_details
-``` 
+Headers - authorization - {token}
+```
+
+```
+1.productId (required)
+2.quantity (required)
+```
+
+- Update Order -  PATCH /  http://localhost:3000/orders/:orderId   
+```
+Headers - authorization - {token}
+```
+
+```
+1.quantity (required)
+```
+
+- Cancel Order -  DELETE /  http://localhost:3000/orders/:orderId        
+```
+Headers - authorization - {token}
+```
+
+- Get Your Order -  GET /  http://localhost:3000/orders           
+```
+Headers - authorization - {token}
+```
+
+- List of Ordered Product Based on Customer -  GET /  http://localhost:3000/orders/ordered_product_based_on_customer   
+```
+Headers - authorization - {token}
+```
+
+- List of Ordered Product Count Based on Date -  GET /  http://localhost:3000/orders/order_product_based_date  
+```
+Headers - authorization - {token}
+```
+
+- List Customer Based No of Product Purchased -  GET /  http://localhost:3000/orders/cust_based_orders           
+```
+Headers - authorization - {token}
+```
+
+- List All Customer Order Info -  GET /  http://localhost:3000/orders/all_details           
+```
+Headers - authorization - {token}
+```
